@@ -9,10 +9,10 @@ public class ShopUI : MonoBehaviour {
     public float swipeMinWidth = 50;
     public GameObject availableFeedback;
 
-    private float startX;
+    private float startX = 0;
     private UIAnimator2 anim;
     [HideInInspector]
-    public bool isOpen;
+    public bool isOpen = false;
 
     private float clickPowValue;
     private int clickPowIndex;
@@ -94,18 +94,18 @@ public class ShopUI : MonoBehaviour {
         if (t.phase == TouchPhase.Began) {
             startX = t.position.x;
         }
-        if (t.phase == TouchPhase.Ended) {
-            if (t.position.x - startX > swipeMinWidth && !isOpen) {
+        else if (t.phase == TouchPhase.Ended) {
+            if (t.position.x < startX - swipeMinWidth && !isOpen) {
                 anim.StartAnim("slide");
                 isOpen = true;
             }
-            else if (t.position.x - startX < swipeMinWidth) {
+            else if (t.position.x > startX + swipeMinWidth) {
                 if (isOpen) {
                     anim.StartAnim("slide");
                     isOpen = false;
                 }
-                else
-                    Application.Quit();
+                /*else
+                    Application.Quit();*/
             }
         }
     }
