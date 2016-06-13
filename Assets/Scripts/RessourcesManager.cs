@@ -37,6 +37,15 @@ public class RessourcesManager : MonoBehaviour {
     public float bigIdlePrice;
     public float bigIdlePriceMultiplier = 1.3f;
 
+    public float initClicPower;
+    public float initClicPrice;
+    public float initMaxCombo;
+    public float initComboPrice;
+    public float initSmallIdleSpeed;
+    public float initSmallIdlePrice;
+    public float initBigIdleSpeed;
+    public float initBigIdlePrice;
+
 
     
 	void Awake () {
@@ -44,6 +53,15 @@ public class RessourcesManager : MonoBehaviour {
         firstSmallIdle = smallIdleSpeed;
         firstBigIdle = bigIdleSpeed;
         smallIdleSpeed = bigIdleSpeed = 0;
+
+        initClicPower = clicPower;
+        initClicPrice = clicPrice;
+        initMaxCombo = maxCombo;
+        initComboPrice = comboPrice;
+        initSmallIdleSpeed = smallIdleSpeed;
+        initSmallIdlePrice = smallIdlePrice;
+        initBigIdleSpeed = bigIdleSpeed;
+        initBigIdlePrice = bigIdlePrice;
 
         distance = PlayerPrefs.GetFloat("distance", distance);
         clicPower = PlayerPrefs.GetFloat("clicPower", clicPower);
@@ -131,6 +149,32 @@ public class RessourcesManager : MonoBehaviour {
 
             PlayerPrefs.Save();
         }
+    }
+
+    public void Reset() {
+        PlayerPrefs.SetFloat("distance", 0);
+        PlayerPrefs.SetFloat("clicPower", initClicPower);
+        PlayerPrefs.SetFloat("clicPrice", initClicPrice);
+        PlayerPrefs.SetFloat("maxCombo", initMaxCombo);
+        PlayerPrefs.SetFloat("comboPrice", initComboPrice);
+        PlayerPrefs.SetFloat("smallIdleSpeed", initSmallIdleSpeed);
+        PlayerPrefs.SetFloat("smallIdlePrice", initSmallIdlePrice);
+        PlayerPrefs.SetFloat("bigIdleSpeed", initBigIdleSpeed);
+        PlayerPrefs.SetFloat("bigIdlePrice", initBigIdlePrice);
+        PlayerPrefs.SetFloat("previousGameTime", 0);
+
+        distance = 0;
+        clicPower = initClicPower;
+        clicPrice = initClicPrice;
+        maxCombo = initMaxCombo;
+        comboPrice = initComboPrice;
+        smallIdleSpeed = initSmallIdleSpeed;
+        smallIdlePrice = initSmallIdlePrice;
+        bigIdleSpeed = initBigIdleSpeed;
+        bigIdlePrice = initBigIdlePrice;
+        previousGameTime = 0;
+
+        PlayerPrefs.Save();
     }
 
 }
