@@ -104,8 +104,8 @@ public class ShopUI : MonoBehaviour {
                     anim.StartAnim("slide");
                     isOpen = false;
                 }
-                /*else
-                    Application.Quit();*/
+                else
+                    Application.Quit();
             }
         }
     }
