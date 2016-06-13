@@ -42,6 +42,18 @@ public class RessourcesManager : MonoBehaviour {
         firstSmallIdle = smallIdleSpeed;
         firstBigIdle = bigIdleSpeed;
         smallIdleSpeed = bigIdleSpeed = 0;
+
+        distance = PlayerPrefs.GetFloat("distance", distance);
+        clicPower = PlayerPrefs.GetFloat("clicPower", clicPower);
+        clicPrice = PlayerPrefs.GetFloat("clicPrice", clicPrice);
+        maxCombo = PlayerPrefs.GetFloat("maxCombo", maxCombo);
+        comboPrice = PlayerPrefs.GetFloat("comboPrice", comboPrice);
+        smallIdleSpeed = PlayerPrefs.GetFloat("smallIdleSpeed", smallIdleSpeed);
+        smallIdlePrice = PlayerPrefs.GetFloat("smallIdlePrice", smallIdlePrice);
+        bigIdleSpeed = PlayerPrefs.GetFloat("bigIdleSpeed", bigIdleSpeed);
+        bigIdlePrice = PlayerPrefs.GetFloat("bigIdlePrice", bigIdlePrice);
+
+        StartCoroutine(Save());
 	}
 	
 	// Update is called once per frame
@@ -97,6 +109,24 @@ public class RessourcesManager : MonoBehaviour {
         distance -= bigIdlePrice;
         bigIdleSpeed *= bigIdleSpeedMultiplier;
         bigIdlePrice *= bigIdlePriceMultiplier;
+    }
+
+    IEnumerator Save() {
+        while (true) {
+            yield return new WaitForSeconds(1);
+
+            PlayerPrefs.SetFloat("distance", distance);
+            PlayerPrefs.SetFloat("clicPower", clicPower);
+            PlayerPrefs.SetFloat("clicPrice", clicPrice);
+            PlayerPrefs.SetFloat("maxCombo", maxCombo);
+            PlayerPrefs.SetFloat("comboPrice", comboPrice);
+            PlayerPrefs.SetFloat("smallIdleSpeed", smallIdleSpeed);
+            PlayerPrefs.SetFloat("smallIdlePrice", smallIdlePrice);
+            PlayerPrefs.SetFloat("bigIdleSpeed", bigIdleSpeed);
+            PlayerPrefs.SetFloat("bigIdlePrice", bigIdlePrice);
+
+            PlayerPrefs.Save();
+        }
     }
 
 }
