@@ -21,7 +21,7 @@ public class MainUIManager : MonoBehaviour {
 
 	void Update () {
         Utils.FormatDistance(RessourcesManager.intance.distance, ref distPowIndex, ref distance);
-        Utils.FormatDistance(RessourcesManager.intance.smallIdleSpeed + RessourcesManager.intance.bigIdleSpeed, ref speedPowIndex, ref speed);
+        Utils.FormatDistance(RessourcesManager.intance.SmallIdleSpeed + RessourcesManager.intance.BigIdleSpeed, ref speedPowIndex, ref speed);
         distanceText.text = distance.ToString("F1") +Utils.metersPow[distPowIndex];
         speedText.text = speed.ToString("F1") + Utils.metersPow[speedPowIndex] + "/s";
         comboText.text = "x" + RessourcesManager.intance.currentCombo;

@@ -58,29 +58,30 @@ public class ShopUI : MonoBehaviour {
 	}
 
     private void UpdateValues() {
-        Utils.FormatDistance(RessourcesManager.intance.clicPower, ref clickPowIndex, ref clickPowValue);
-        Utils.FormatDistance(RessourcesManager.intance.smallIdleSpeed, ref smallIdlePowIndex, ref smallIdlePowValue);
-        Utils.FormatDistance(RessourcesManager.intance.bigIdleSpeed, ref bigIdlePowIndex, ref bigIdlePowValue);
+        Utils.FormatDistance(RessourcesManager.intance.ClicPower, ref clickPowIndex, ref clickPowValue);
+        Utils.FormatDistance(RessourcesManager.intance.SmallIdleSpeed, ref smallIdlePowIndex, ref smallIdlePowValue);
+        Utils.FormatDistance(RessourcesManager.intance.BigIdleSpeed, ref bigIdlePowIndex, ref bigIdlePowValue);
 
-        clickPowText.text = "Cur Pow: " + clickPowValue.ToString("F1") + Utils.metersPow[clickPowIndex];
-        comboPowText.text = "Cur Pow: " + "x" + RessourcesManager.intance.maxCombo;
+		if (clickPowIndex < Utils.metersPow.Length)
+			clickPowText.text = "Cur Pow: " + clickPowValue.ToString("F1") + Utils.metersPow[clickPowIndex];
+        comboPowText.text = "Cur Pow: " + "x" + RessourcesManager.intance.MaxCombo;
         smallIdlePowText.text = "Cur Pow: " + smallIdlePowValue.ToString("F1") + Utils.metersPow[smallIdlePowIndex];
         bigIdlePowText.text = "Cur Pow: " + bigIdlePowValue.ToString("F1") + Utils.metersPow[bigIdlePowIndex];
 
-        Utils.FormatDistance(RessourcesManager.intance.clicPrice, ref clickPriceIndex, ref clickPriceValue);
-        Utils.FormatDistance(RessourcesManager.intance.comboPrice, ref comboPriceIndex, ref comboPriceValue);
-        Utils.FormatDistance(RessourcesManager.intance.smallIdlePrice, ref smallIdlePriceIndex, ref smallIdlePriceValue);
-        Utils.FormatDistance(RessourcesManager.intance.bigIdlePrice, ref bigIdlePriceIndex, ref bigIdlePriceValue);
+        Utils.FormatDistance(RessourcesManager.intance.ClicPrice, ref clickPriceIndex, ref clickPriceValue);
+        Utils.FormatDistance(RessourcesManager.intance.ComboPrice, ref comboPriceIndex, ref comboPriceValue);
+        Utils.FormatDistance(RessourcesManager.intance.SmallIdlePrice, ref smallIdlePriceIndex, ref smallIdlePriceValue);
+        Utils.FormatDistance(RessourcesManager.intance.BigIdlePrice, ref bigIdlePriceIndex, ref bigIdlePriceValue);
 
         clickPriceText.text = "Price: " + clickPriceValue.ToString("F1") + Utils.metersPow[clickPriceIndex];
         comboPriceText.text = "Price: " + comboPriceValue.ToString("F1") + Utils.metersPow[comboPriceIndex];
         smallIdlePriceText.text = "Price: " + smallIdlePriceValue.ToString("F1") + Utils.metersPow[smallIdlePriceIndex];
         bigIdlePriceText.text = "Price: " + bigIdlePriceValue.ToString("F1") + Utils.metersPow[bigIdlePriceIndex];
 
-        clickBuyBtn.interactable = RessourcesManager.intance.clicPrice <= RessourcesManager.intance.distance;
-        comboBuyBtn.interactable = RessourcesManager.intance.comboPrice <= RessourcesManager.intance.distance;
-        smallIdleBuyBtn.interactable = RessourcesManager.intance.smallIdlePrice <= RessourcesManager.intance.distance;
-        bigIdleBuyBtn.interactable = RessourcesManager.intance.bigIdlePrice <= RessourcesManager.intance.distance;
+        clickBuyBtn.interactable = RessourcesManager.intance.ClicPrice <= RessourcesManager.intance.distance;
+        comboBuyBtn.interactable = RessourcesManager.intance.ComboPrice <= RessourcesManager.intance.distance;
+        smallIdleBuyBtn.interactable = RessourcesManager.intance.SmallIdlePrice <= RessourcesManager.intance.distance;
+        bigIdleBuyBtn.interactable = RessourcesManager.intance.BigIdlePrice <= RessourcesManager.intance.distance;
 
         availableFeedback.SetActive(clickBuyBtn.interactable || comboBuyBtn.interactable || smallIdleBuyBtn.interactable || bigIdleBuyBtn.interactable);
     }
