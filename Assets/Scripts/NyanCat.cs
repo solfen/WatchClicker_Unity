@@ -12,12 +12,17 @@ public class NyanCat : MonoBehaviour {
     public float speedMultiplier = 0.001f;
 
 	// Use this for initialization
-	void Start () {
+    void Start() {
         anim = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        anim.speed = RessourcesManager.intance.distance / Time.time * speedMultiplier;
-	}
+
+        StartCoroutine(UpdateSpeed());
+    }
+
+    // Update is called once per frame
+    IEnumerator UpdateSpeed() {
+        while (true) {
+            yield return new WaitForSeconds(1f);
+            anim.speed = (RessourcesManager.intance.distance / (Time.time + RessourcesManager.intance.previousGameTime) * speedMultiplier);
+        }
+    }
 }

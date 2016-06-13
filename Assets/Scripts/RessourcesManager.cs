@@ -9,6 +9,8 @@ public class RessourcesManager : MonoBehaviour {
     public float distance;
     [HideInInspector]
     public int currentCombo;
+    [HideInInspector]
+    public float previousGameTime;
 
     private float resetComboTimer;
     private int currentComboClicks;
@@ -50,8 +52,9 @@ public class RessourcesManager : MonoBehaviour {
         comboPrice = PlayerPrefs.GetFloat("comboPrice", comboPrice);
         smallIdleSpeed = PlayerPrefs.GetFloat("smallIdleSpeed", smallIdleSpeed);
         smallIdlePrice = PlayerPrefs.GetFloat("smallIdlePrice", smallIdlePrice);
-        bigIdleSpeed = PlayerPrefs.GetFloat("bigIdleSpeed", bigIdleSpeed);
+        bigIdleSpeed = PlayerPrefs.GetFloat("bigIdleSpeed", bigIdleSpeed); 
         bigIdlePrice = PlayerPrefs.GetFloat("bigIdlePrice", bigIdlePrice);
+        previousGameTime = PlayerPrefs.GetFloat("previousGameTime", previousGameTime);
 
         StartCoroutine(Save());
 	}
@@ -124,6 +127,7 @@ public class RessourcesManager : MonoBehaviour {
             PlayerPrefs.SetFloat("smallIdlePrice", smallIdlePrice);
             PlayerPrefs.SetFloat("bigIdleSpeed", bigIdleSpeed);
             PlayerPrefs.SetFloat("bigIdlePrice", bigIdlePrice);
+            PlayerPrefs.SetFloat("previousGameTime", Time.time);
 
             PlayerPrefs.Save();
         }
